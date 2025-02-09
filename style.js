@@ -88,7 +88,16 @@ function loadQuestion() {
     currentQuestion.options.forEach((option, index) => {
         const button = document.createElement('button');
         button.textContent = option;
+
+        // Add event listener to handle selection
         button.addEventListener('click', () => selectOption(index));
+
+        // Highlight the selected answer if it matches the current selection
+        if (selectedAnswer === index) {
+            button.style.backgroundColor = '#8a2be2';
+            button.style.color = 'white';
+        }
+
         optionsContainer.appendChild(button);
     });
 
@@ -97,11 +106,13 @@ function loadQuestion() {
 }
 
 function selectOption(selectedIndex) {
+    // Update the selected answer
     selectedAnswer = selectedIndex;
 
-    // Disable other options after selection
+    // Reset all buttons to default style
     Array.from(optionsContainer.children).forEach((btn, index) => {
-        btn.disabled = true;
+        btn.style.backgroundColor = '';
+        btn.style.color = '';
         if (index === selectedIndex) {
             btn.style.backgroundColor = '#8a2be2'; // Highlight selected answer
             btn.style.color = 'white';
