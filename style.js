@@ -92,7 +92,6 @@ function loadQuestion() {
         optionsContainer.appendChild(button);
     });
 
-    // Reset buttons visibility
     updateButtonsVisibility();
     updateProgressBar();
 }
